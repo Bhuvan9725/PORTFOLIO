@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhuvana Sankar Thiramsetti — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2C;
+    --ink-2:#122238;
+    --surface:#152845;
+    --surface-2:#1B3050;
+    --gold:#C9A24B;
+    --gold-soft:#E4C989;
+    --teal:#3FA9A0;
+    --cream:#F3EEE1;
+    --muted:#8FA0BA;
+    --line:rgba(243,238,225,0.14);
+    --font-display:'Fraunces', serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--font-body);
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,27,44,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    font-family:var(--font-display); font-size:19px; font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .brand span{color:var(--gold);}
+  .navlinks{display:flex; gap:36px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;}
+  .navlinks a{color:var(--muted); transition:color .25s ease; position:relative;}
+  .navlinks a:hover{color:var(--cream);}
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:-6px; width:0; height:1px; background:var(--gold);
+    transition:width .3s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  @media (max-width:720px){ .navlinks{display:none;} }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:96px 0 64px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--teal); display:inline-block;}
+
+  h1.name{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(38px, 5.4vw, 60px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:16px;
+  }
+  h1.name em{
+    font-style:italic; font-weight:400; color:var(--gold-soft);
+  }
+  .role{
+    font-size:17px; color:var(--muted); max-width:480px; margin-bottom:28px; font-weight:300;
+  }
+  .role strong{color:var(--cream); font-weight:500;}
+
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.05em;
+    padding:13px 22px; border-radius:2px; border:1px solid var(--line);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all .25s ease;
+  }
+  .btn.solid{background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:500;}
+  .btn.solid:hover{background:var(--gold-soft); border-color:var(--gold-soft);}
+  .btn.ghost:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  .loom-wrap{position:relative;}
+  .loom-caption{
+    font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:center;
+    margin-top:14px; letter-spacing:0.04em;
+  }
+
+  /* SECTIONS shared */
+  section{padding:76px 0; border-top:1px solid var(--line);}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:40px;}
+  .sec-num{font-family:var(--font-mono); font-size:12px; color:var(--gold);}
+  .sec-title{font-family:var(--font-display); font-size:28px; font-weight:600;}
+
+  /* ABOUT */
+  .about-text{max-width:680px; font-size:16px; color:#D7DCE6; font-weight:300;}
+  .about-text p{margin-bottom:16px;}
+  .about-meta{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px;
+  }
+  @media (max-width:640px){ .about-meta{grid-template-columns:1fr;} }
+  .meta-card{
+    background:var(--surface); border:1px solid var(--line); padding:20px; border-radius:3px;
+  }
+  .meta-label{font-family:var(--font-mono); font-size:11px; color:var(--teal); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;}
+  .meta-val{font-size:15px; color:var(--cream); font-weight:400;}
+
+  /* SKILLS as loom rows */
+  .loom-table{border-top:1px solid var(--line);}
+  .loom-row{
+    display:grid; grid-template-columns:180px 1fr; gap:24px; padding:18px 0;
+    border-bottom:1px solid var(--line); align-items:center;
+  }
+  @media (max-width:640px){ .loom-row{grid-template-columns:1fr; gap:8px;} }
+  .loom-row .cat{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold-soft);
+  }
+  .threads{display:flex; flex-wrap:wrap; gap:10px;}
+  .thread{
+    font-size:13.5px; padding:6px 14px; border:1px solid var(--line); border-radius:20px;
+    color:var(--muted); position:relative; transition:all .25s ease;
+  }
+  .thread:hover{border-color:var(--teal); color:var(--cream);}
+
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-card{
+    background:var(--surface); border:1px solid var(--line); padding:28px; border-radius:3px;
+    position:relative; overflow:hidden; transition:transform .3s ease, border-color .3s ease;
+  }
+  .proj-card:hover{transform:translateY(-4px); border-color:var(--gold);}
+  .proj-num{font-family:var(--font-mono); font-size:11px; color:var(--teal); margin-bottom:14px;}
+  .proj-title{font-family:var(--font-display); font-size:21px; font-weight:600; margin-bottom:10px;}
+  .proj-desc{font-size:14.5px; color:var(--muted); margin-bottom:16px; font-weight:300;}
+  .proj-role{font-size:13.5px; color:#C7CEDA; margin-bottom:16px; font-weight:300;}
+  .proj-role strong{color:var(--cream); font-weight:500;}
+  .proj-stack{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-family:var(--font-mono); font-size:11px; padding:4px 10px; background:var(--surface-2); color:var(--gold-soft); border-radius:2px;}
+
+  /* TIMELINE (experience + education) */
+  .timeline{position:relative; padding-left:28px; border-left:1px solid var(--line);}
+  .tl-item{position:relative; padding-bottom:36px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-33px; top:4px; width:9px; height:9px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 0 4px var(--ink), 0 0 0 5px var(--line);
+  }
+  .tl-when{font-family:var(--font-mono); font-size:12px; color:var(--teal); margin-bottom:6px;}
+  .tl-title{font-family:var(--font-display); font-size:19px; font-weight:600; margin-bottom:4px;}
+  .tl-sub{font-size:13.5px; color:var(--muted); margin-bottom:10px;}
+  .tl-desc{font-size:14px; color:#C7CEDA; font-weight:300; max-width:600px;}
+  .tl-desc li{margin-left:18px; margin-bottom:4px;}
+
+  /* CERTS / ACHIEVEMENTS */
+  .cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:760px){ .cert-grid{grid-template-columns:1fr;} }
+  .cert-card{
+    border:1px solid var(--line); padding:18px 20px; border-radius:3px; font-size:14px; color:#D7DCE6; font-weight:300;
+  }
+  .cert-card strong{display:block; color:var(--gold-soft); font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; font-weight:500;}
+
+  .ach-list{margin-top:32px; max-width:680px;}
+  .ach-list li{list-style:none; padding-left:24px; position:relative; margin-bottom:14px; font-size:14.5px; color:#C7CEDA; font-weight:300;}
+  .ach-list li::before{content:"—"; position:absolute; left:0; color:var(--teal);}
+
+  /* FOOTER / CONTACT */
+  footer{
+    padding:80px 0 48px; text-align:center; border-top:1px solid var(--line);
+  }
+  .footer-title{font-family:var(--font-display); font-size:34px; font-weight:600; margin-bottom:18px;}
+  .footer-title em{font-style:italic; color:var(--gold-soft); font-weight:400;}
+  .footer-sub{color:var(--muted); font-size:15px; margin-bottom:32px; font-weight:300;}
+  .contact-row{display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:48px;}
+  .foot-meta{font-family:var(--font-mono); font-size:11.5px; color:var(--muted); letter-spacing:0.04em;}
+
+  @media (prefers-reduced-motion: reduce){
+    * { animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Thiramsetti<span> Bhuvana Sankar</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Visakhapatnam, Andhra Pradesh</div>
+      <h1 class="name">Bhuvana Sankar<br><em>Thiramsetti</em></h1>
+      <p class="role">
+  B.Tech student in <strong>AI & Machine Learning</strong> at Anil Neerukonda Institute of Technology & Sciences, passionate about developing AI-powered applications using <strong>Python</strong> and solving real-world problems through technology.
+</p>
+ <div class="cta-row">
+        <a class="btn solid" href="mailto:tiramsettibhuvanashankar@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/bhuvanasankar/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/Bhuvan9725" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+   
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">About</span></div>
+    <div class="about-text">
+      <p>I'm an aspiring AI/ML engineer currently in my second year at Anil Neerukonda Institute of Technology & Sciences, Visakhapatnam, after finishing a Diploma in Computer Engineering at Andhra Polytechnic, Kakinada. My interests sit at the intersection of intelligent systems, connected devices, and the mobile apps that put them in people's hands.</p>
+      <p>Along the way I've picked up hands-on experience with Python, IoT hardware integration, and cross-platform development in Flutter — and I'm always looking for the next problem worth automating.</p>
+    </div>
+    <div class="about-meta">
+      <div class="meta-card">
+        <div class="meta-label">Currently</div>
+        <div class="meta-val">B.Tech AIML, 3rd Year · CGPA 8.23/10</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">Based in</div>
+        <div class="meta-val">Uppada, Kakinada, Andhra Pradesh</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">Languages</div>
+        <div class="meta-val">English, Telugu, Hindi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Skills</span></div>
+    <div class="loom-table">
+      <div class="loom-row">
+        <div class="cat">Programming</div>
+        <div class="threads"><span class="thread">C</span><span class="thread">C++</span><span class="thread">Java</span><span class="thread">Python</span></div>
+      </div>
+      <div class="loom-row">
+        <div class="cat">Web</div>
+        <div class="threads"><span class="thread">HTML</span><span class="thread">CSS</span><span class="thread">JavaScript</span><span class="thread">PHP</span><span class="thread">MySQL</span></div>
+      </div>
+      <div class="loom-row">
+        <div class="cat">Database</div>
+        <div class="threads"><span class="thread">DBMS</span><span class="thread">SQL</span></div>
+      </div>
+      <div class="loom-row">
+        <div class="cat">Tools</div>
+        <div class="threads"><span class="thread">VS Code</span><span class="thread">MS Office</span></div>
+      </div>
+      <div class="loom-row">
+        <div class="cat">Applied</div>
+        <div class="threads"><span class="thread">IoT</span><span class="thread">Flutter / Dart</span><span class="thread">NLP</span><span class="thread">Speech Recognition</span></div>
+      </div>
+      <div class="loom-row">
+        <div class="cat">Soft skills</div>
+        <div class="threads"><span class="thread">Communication</span><span class="thread">Teamwork</span><span class="thread">Problem-solving</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Projects</span></div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-num">Project 01</div>
+        <div class="proj-title">Blood Donor Management System</div>
+        <div class="proj-desc">A system to manage and track blood donors, recipients, and blood availability — with donor registration, search by blood group, and request handling for emergencies.</div>
+        <div class="proj-role"><strong>Contribution:</strong> designed the database structure, built the user interface, and developed the core search and data-management logic.</div>
+        <div class="proj-stack"><span class="tag">Java / Python</span><span class="tag">MySQL</span><span class="tag">HTML/CSS</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">Project 02</div>
+        <div class="proj-title">AI Desktop Assistant</div>
+        <div class="proj-desc">A voice-controlled desktop assistant that opens applications, searches the web, sets reminders, and answers questions hands-free.</div>
+        <div class="proj-role"><strong>Contribution:</strong> built the voice recognition module, integrated APIs, and implemented the command-processing logic.</div>
+        <div class="proj-stack"><span class="tag">Python</span><span class="tag">Speech Recognition</span><span class="tag">NLP</span><span class="tag">APIs</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Experience</span></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-when">6 months</div>
+        <div class="tl-title">Intern — Cedura Tech</div>
+        <div class="tl-sub">IoT & Flutter mobile development</div>
+        <ul class="tl-desc">
+          <li>Worked on IoT applications and mobile app development using Flutter</li>
+          <li>Developed and tested IoT-based solutions involving sensor data collection and device communication</li>
+          <li>Built cross-platform mobile apps with responsive UI design</li>
+          <li>Gained hands-on experience integrating hardware with software systems</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Education</span></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-when">2025 — 2028 (present)</div>
+        <div class="tl-title">B.Tech, Artificial Intelligence & Machine Learning</div>
+        <div class="tl-sub">Anil Neerukonda Institute of Technology & Sciences, Visakhapatnam · CGPA 8.23/10</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">2022 — 2025</div>
+        <div class="tl-title">Diploma in Computer Engineering</div>
+        <div class="tl-sub">Andhra Polytechnic, Kakinada · 92%</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">2022</div>
+        <div class="tl-title">SSC (10th grade)</div>
+        <div class="tl-sub">Z.P.H.S Vakatippa High School, U. Kothapalli · 92.5%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Certifications</span></div>
+    <div class="cert-grid">
+      <div class="cert-card"><strong>Cisco Networking Academy</strong>Python Essentials</div>
+      <div class="cert-card"><strong>QubiTech</strong>Quantum Computing</div>
+      <div class="cert-card"><strong>AI for Vizag</strong>AI Buildathon Participation</div>
+       <div class="cert-card"><strong>EDumoon</strong>Large Language Models(LLM)</div>
+    </div>
+    <ul class="ach-list">
+      <li>Participated in the AI for Vizag Buildathon, gaining hands-on experience in real-world AI problem solving</li>
+      <li>Actively participated in technical events and workshops on emerging technologies</li>
+    </ul>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-title">Let's build something <em>intelligent</em>.</div>
+    <div class="footer-sub">Open to internships and collaborative projects in AI, IoT, and app development.</div>
+    <div class="contact-row">
+      <a class="btn solid" href="mailto:tiramsettibhuvanashankar@gmail.com">tiramsettibhuvanashankar@gmail.com</a>
+      <a class="btn ghost" href="tel:+917396076389">+91 73960 76389</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/bhuvanasankar/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/Bhuvan9725" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-meta">Uppada, Kakinada, Andhra Pradesh, India</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var svg = document.getElementById('techSvg');
+  var ns = "http://www.w3.org/2000/svg";
+  var W = 360, H = 320;
+  var cols = 8, rows = 7;
+  var marginX = 40, marginY = 30;
+  var stepX = (W - marginX*2) / (cols-1);
+  var stepY = (H - marginY*2) / (rows-1);
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for(var r=0;r<rows;r++){
+    var y = marginY + r*stepY;
+    var line = document.createElementNS(ns,'path');
+    var d = "M "+marginX+" "+y;
+    for(var c=0;c<cols;c++){
+      var x = marginX + c*stepX;
+      var wob = (r%2===0) ? 6 : -6;
+      d += " Q "+(x-stepX/2)+" "+(y+wob)+" "+x+" "+y;
+    }
+    line.setAttribute('d', d);
+    line.setAttribute('stroke', 'rgba(243,238,225,0.22)');
+    line.setAttribute('stroke-width','1');
+    line.setAttribute('fill','none');
+    svg.appendChild(line);
+  }
+
+  for(var c2=0;c2<cols;c2++){
+    var x2 = marginX + c2*stepX;
+    var line2 = document.createElementNS(ns,'path');
+    var d2 = "M "+x2+" "+marginY;
+    for(var r2=0;r2<rows;r2++){
+      var y2 = marginY + r2*stepY;
+      var wob2 = (c2%2===0) ? 6 : -6;
+      d2 += " Q "+(x2+wob2)+" "+(y2-stepY/2)+" "+x2+" "+y2;
+    }
+    line2.setAttribute('d', d2);
+    line2.setAttribute('stroke', 'rgba(201,162,75,0.35)');
+    line2.setAttribute('stroke-width','1');
+    line2.setAttribute('fill','none');
+    svg.appendChild(line2);
+  }
+
+  var nodeSpots = [];
+  for(var r3=1;r3<rows-1;r3++){
+    for(var c3=1;c3<cols-1;c3++){
+      if(Math.random() < 0.28){
+        nodeSpots.push([marginX + c3*stepX, marginY + r3*stepY]);
+      }
+    }
+  }
+
+  nodeSpots.forEach(function(pt, i){
+    var g = document.createElementNS(ns,'g');
+    var circle = document.createElementNS(ns,'circle');
+    circle.setAttribute('cx', pt[0]);
+    circle.setAttribute('cy', pt[1]);
+    circle.setAttribute('r', 3.2);
+    circle.setAttribute('fill', '#3FA9A0');
+    g.appendChild(circle);
+
+    if(!reduced){
+      var pulse = document.createElementNS(ns,'circle');
+      pulse.setAttribute('cx', pt[0]);
+      pulse.setAttribute('cy', pt[1]);
+      pulse.setAttribute('r', 3.2);
+      pulse.setAttribute('fill', 'none');
+      pulse.setAttribute('stroke', '#3FA9A0');
+      pulse.setAttribute('stroke-width', '1');
+      pulse.setAttribute('opacity', '0.6');
+      var anim1 = document.createElementNS(ns,'animate');
+      anim1.setAttribute('attributeName','r');
+      anim1.setAttribute('values','3.2;10;3.2');
+      anim1.setAttribute('dur', (3 + (i%4))+'s');
+      anim1.setAttribute('repeatCount','indefinite');
+      anim1.setAttribute('begin', (i*0.4)+'s');
+      var anim2 = document.createElementNS(ns,'animate');
+      anim2.setAttribute('attributeName','opacity');
+      anim2.setAttribute('values','0.6;0;0.6');
+      anim2.setAttribute('dur', (3 + (i%4))+'s');
+      anim2.setAttribute('repeatCount','indefinite');
+      anim2.setAttribute('begin', (i*0.4)+'s');
+      pulse.appendChild(anim1);
+      pulse.appendChild(anim2);
+      g.appendChild(pulse);
+    }
+    svg.appendChild(g);
+  });
+})();
+</script>
+
+</body>
+</html>
